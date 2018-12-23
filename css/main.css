@@ -1,0 +1,87 @@
+body {
+  background: #000;
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.center {
+  display: table;
+  width: 100%;
+  height: 100vh;
+}
+
+#social h2 {
+  color: #fff;
+  font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+  font-weight: 100;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#social {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#social ul {
+  text-align: center;
+  padding-left: 0px;
+}
+
+#social li {
+  list-style-type: none;
+  text-align: center;
+  display: inline-block;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#social li:first-child {
+  margin-left: 0px;
+}
+
+#social li:last-child {
+  margin-right: 0px;
+}
+/** Instagram **/
+
+.instagram {
+  width: 50px;
+  height: 50px;
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+}
+
+.instagram .border {
+  background: transparent;
+  outline: none;
+  color: rgba(255, 255, 255, 0.3);
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all .2s ease-in-out;
+}
+
+.instagram .border:hover {
+  background: #517fa4;
+  border-color: #7495af;
+  color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.2);
+}
+
+.fa.fa-instagram {
+  font-size: 25px;
+  -ms-transform: rotate(-45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(-45deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(-45deg);
+}

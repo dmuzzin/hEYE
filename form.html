@@ -31,13 +31,13 @@
             var namenode = document.createElement("p");
             var textnode = document.createTextNode("Hello: " + sessionStorage.getItem("name"));
             namenode.appendChild(textnode);
-            document.body.prependChild(namenode);
+            document.body.prepend(namenode);
             
             var propic=document.createElement('img');
             propic.src=sessionStorage.getItem("photo");
             propic.width=100;
             propic.height=100;
-            document.body.prependChild(propic);
+            document.body.prepend(propic);
             
             console.log(sessionStorage.getItem("alias"));
             console.log(sessionStorage.getItem("name"));

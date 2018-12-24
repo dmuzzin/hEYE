@@ -28,6 +28,17 @@
             </div>
         </form>
         <script>
+            var namenode = document.createElement("p");
+            var textnode = document.createTextNode("Hello: " + sessionStorage.getItem("name");
+            namenode.appendChild(textnode);
+            document.body.prependChild(namenode);
+            
+            var propic=document.createElement('img');
+            propic.src=sessionStorage.getItem("photo");
+            propic.width=100px;
+            propic.height=100px;
+            document.body.prependChild(propic);
+            
             console.log(sessionStorage.getItem("alias"));
             console.log(sessionStorage.getItem("name"));
             console.log(sessionStorage.getItem("photo"));

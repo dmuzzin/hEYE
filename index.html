@@ -27,15 +27,16 @@
         // OAuth provider url
         instagram.get('/v1/users/self').then(data => {
           console.log('self data:', data);
-          console.log(data.data.name);
-          console.log(data.data.alias);
-          console.log(data.avatar);
+          console.log(data.data.username);
+          console.log(data.data.full_name);
+          console.log(data.data.profile_picture);
+          console.log(data.data.id);
           // Set session information from insta login
-          sessionStorage.setItem("alias", data.alias);
-          sessionStorage.setItem("name", data.name);
-          sessionStorage.setItem("photo", data.avatar);
-          sessionStorage.setItem("id", data.id);
-          console.log("asdf:" + sessionStorage.getItem("name"));
+          sessionStorage.setItem("alias", data.data.username);
+          sessionStorage.setItem("name", data.data.full_name);
+          sessionStorage.setItem("photo", data.data.profile_picture);
+          sessionStorage.setItem("id", data.data.id);
+          console.log(sessionStorage.getItem("photo"));
           //window.location.href = "http:/dmuzzin.github.io/hEYE/form.html";
         })
       });

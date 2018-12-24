@@ -28,10 +28,10 @@
         instagram.get('/v1/users/self').then(data => {
           console.log('self data:', data);
           // Set session information from insta login
-          localStorage.setItem("alias", data.data.alias);
-          localStorage.setItem("name", data.data.name);
-          localStorage.setItem("photo", data.data.avatar);
-          localStorage.setItem("id", data.data.id);
+          sessionStorage.setItem("alias", data.data.alias);
+          sessionStorage.setItem("name", data.data.name);
+          sessionStorage.setItem("photo", data.data.avatar);
+          sessionStorage.setItem("id", data.data.id);
           window.location.href = "http:/dmuzzin.github.io/hEYE/form.html";
         })
       });

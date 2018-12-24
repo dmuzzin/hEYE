@@ -28,10 +28,10 @@
         instagram.get('/v1/users/self').then(data => {
           console.log('self data:', data);
         })
-        // Set session information
-        localStorage.setItem("name", "data.name");
+        // Set session information from insta login
+        localStorage.setItem("instagram_info", data);
         // Redirect to form page
-        //window.location.href = "http:/dmuzzin.github.io/hEYE/form.html";
+        window.location.href = "http:/dmuzzin.github.io/hEYE/form.html";
       });
     })
     </script>

@@ -27,12 +27,13 @@
         // OAuth provider url
         instagram.get('/v1/users/self').then(data => {
           console.log('self data:', data);
+          // Set session information from insta login
+          localStorage.setItem("alias", data.alias);
+          localStorage.setItem("name", data.name);
+          localStorage.setItem("photo", data.avatar);
+          localStorage.setItem("id", data.id);
         })
-        // Set session information from insta login
-        localStorage.setItem("alias", data.alias);
-        localStorage.setItem("name", data.name);
-        localStorage.setItem("photo", data.avatar);
-        localStorage.setItem("id", data.id);
+       
         // Redirect to form page
         window.location.href = "http:/dmuzzin.github.io/hEYE/form.html";
       });

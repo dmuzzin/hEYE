@@ -1,45 +1,80 @@
+<!DOCTYPE HTML>
 <html>
-  <header>
+<header>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
-  </header>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+</header>
 
-  <body>
-    <a id="instagram-button" class="btn btn-block btn-social btn-instagram">
-      <i class="fa fa-instagram"></i> Sign in with Instagram
-    </a>
+<body>
+    <div class="container-contact100">
+        <div class="wrap-contact100">
+            <span class="contact100-form-title" id="name-title">
+                What is hEYE?
+            </span>
+            <h5 style="text-align:center;">It is an exciting, authentic, and engaging social experience created to encourage connection through eye-contact. You
+            will be paired with 20+ men or women and asked to look directly into each other's eyes for 60 seconds, and then rate
+            the degree to which you agree or disagree with the following three questions: 1) I had a great experience with Person
+            A, 2) I felt a connection with Person A, and 3) I'd love to talk to Person A afterwards.</h5>
+            <h5 style="text-align:center;">...</h5>
+            <h5 style="text-align:center;">The following day you'll receive one or more matches (up to 5) based on how positive and similar your reported
+            interaction with another individual was to theirs, with you. Matches will be found on our chat portal, where we
+            encourage you to exchange witty banter and move the conversation offline.</h5>
+            <h5 style="text-align:center;">...</h5>
+            <h5 style="text-align:center;">Whether you leave the venue feeling like you've made a connection worth pursuing or not; the fleeting and ephemeral
+            experience you'll have contributed to will surely leave you eager to look up from your screen the next time you walk
+            down the street, and with a story that may prove difficult to recount.</h5>
 
+            <div class="container-contact100-form-btn">
+                <div class="wrap-contact100-form-btn">
+                    <div class="contact100-form-bgbtn"></div>
+                    <button id="instagram-button" class="contact100-form-btn">
+                        <span>
+                            Get Started with Instagram
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        1. Use OATH to authenticate user via Instagram
+        2. Use generated token to store name, id, alias, profile_photo in session cookie
+    -->
     <script>
-      $('#instagram-button').on('click', function() {
-        // Initialize with your OAuth.io app public key
-        OAuth.initialize('Ff6b6TyqJjRNQFl5TUdc-m0w68g');
-        // Use popup for OAuth
-        OAuth.popup('instagram').then(instagram => {
-        console.log('instagram:', instagram);
-        // Log users data
-        instagram.me().then(data => {
-          console.log('me data:', data);
-        });
-        // Retrieves user data from OAuth provider by using #get() and
-        // OAuth provider url
-        instagram.get('/v1/users/self').then(data => {
-          console.log('self data:', data);
-          console.log(data.data.username);
-          console.log(data.data.full_name);
-          console.log(data.data.profile_picture);
-          console.log(data.data.id);
-          // Set session information from insta login
-          sessionStorage.setItem("alias", data.data.username);
-          sessionStorage.setItem("name", data.data.full_name);
-          sessionStorage.setItem("photo", data.data.profile_picture);
-          sessionStorage.setItem("id", data.data.id);
-          window.location.href = "http:/dmuzzin.github.io/hEYE/form.html";
+        $('#instagram-button').on('click', function () {
+            // Initialize with your OAuth.io app public key
+            OAuth.initialize('Ff6b6TyqJjRNQFl5TUdc-m0w68g');
+            // Use popup for OAuth
+            OAuth.popup('instagram').then(instagram => {
+                // Retrieves user data from OAuth provider by using #get() and
+                // OAuth provider url
+                instagram.get('/v1/users/self').then(data => {
+                    // Log user data
+                    console.log('self data:', data);
+                    console.log(data.data.username);
+                    console.log(data.data.full_name);
+                    console.log(data.data.profile_picture);
+                    console.log(data.data.id);
+                    // Set session information from insta login
+                    sessionStorage.setItem("alias", data.data.username);
+                    sessionStorage.setItem("name", data.data.full_name);
+                    sessionStorage.setItem("photo", data.data.profile_picture);
+                    sessionStorage.setItem("id", data.data.id);
+                    // Redirect user to form page
+                    window.location.href = "http:/dmuzzin.github.io/hEYE/form.html";
+                })
+            });
         })
-      });
-    })
     </script>
-  </body>
+</body>
+
 </html>

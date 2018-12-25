@@ -19,9 +19,9 @@
     /*==================================================================
     [ Validate ]*/
     var url = 'https://script.google.com/macros/s/AKfycbyTwlhVTE2qflgS9Z2kyu0UnMedG4PsuOrRXfI-DFrIyLQI35XJ/exec'
-    var form = $('#match-form').serializeJSON();
+    var formData = JSON.stringify(jQuery('#match-form').serializeArray()); // store json string
 
-    console.log(form);
+    console.log(formData);
     $('#match-form').on('click', function (e) {
         e.preventDefault();
         var jqxhr = $.ajax({

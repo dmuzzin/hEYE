@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Contact V4</title>
+    <title>hEYE Match Form</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -28,8 +28,6 @@
 </head>
 
 <body>
-
-
     <div class="container-contact100">
         <div class="wrap-contact100">
             <form class="contact100-form validate-form">
@@ -40,9 +38,9 @@
                     <img id="prof" src="" style="width:150px;height:150px;border-radius:50%;">
                 </span>
 
-                <div class="wrap-input100 validate-input" data-validate="Name is required">
-                    <span class="label-input100">Match</span>
-                    <input class="input100" type="text" name="name" placeholder="Enter your match's ID number">
+                <div class="wrap-input100 validate-input" data-validate="Potential match's ID is required">
+                    <span class="label-input100">Potential Match</span>
+                    <input class="input100" type="text" name="name" placeholder="Enter your potential match's ID number">
                     <span class="focus-input100"></span>
                 </div>
 
@@ -121,10 +119,7 @@
         </div>
     </div>
 
-
-
     <div id="dropDownSelect1"></div>
-
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
@@ -149,22 +144,15 @@
     <script src="js/main.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-         var namenode = document.createElement("p");
-            var textnode = document.createTextNode("Hello: " + sessionStorage.getItem("name"));
-            namenode.appendChild(textnode);
-            document.body.prepend(namenode);
-
-            document.getElementById("prof").src = sessionStorage.getItem("photo");
-            document.getElementById("name-title").innerHTML = "Hello, " + sessionStorage.getItem("name");
-            console.log(sessionStorage.getItem("alias"));
-            console.log(sessionStorage.getItem("name"));
-            console.log(sessionStorage.getItem("photo"));
-            console.log(sessionStorage.getItem("id"));
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13">
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'UA-23581568-13');
+    </script>
+
+    <!-- Add user specific styling to form -->
+    <script>
+        document.getElementById("prof").src = sessionStorage.getItem("photo");
+        document.getElementById("name-title").innerHTML = "Hello, " + sessionStorage.getItem("name");
     </script>

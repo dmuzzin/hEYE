@@ -20,7 +20,6 @@
     [ Validate ]*/
     var url = 'https://script.google.com/macros/s/AKfycbyTwlhVTE2qflgS9Z2kyu0UnMedG4PsuOrRXfI-DFrIyLQI35XJ/exec'
 
-    console.log(formData);
     $('#match-form').on('click', function (e) {
         var formData = JSON.stringify(jQuery('#match-form').serializeArray()); // store json string
         e.preventDefault();

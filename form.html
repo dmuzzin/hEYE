@@ -161,22 +161,3 @@
         document.getElementById("prof").src = sessionStorage.getItem("photo");
         document.getElementById("name-title").innerHTML = "Hello, " + sessionStorage.getItem("name");
     </script>
-
-    <!-- Script to submit form to Google Sheets-->
-    <script>
-        var url = 'https://script.google.com/macros/s/AKfycbyTwlhVTE2qflgS9Z2kyu0UnMedG4PsuOrRXfI-DFrIyLQI35XJ/exec'
-        var formData = JSON.parse(JSON.stringify(jQuery('#match-form').serializeArray()))
-        $('#submit-form').on('click', function (e) {
-            e.preventDefault();
-            var jqxhr = $.ajax({
-                url: url,
-                method: "GET",
-                dataType: "json",
-                data: formData,
-                success: function () {
-                    // Redirect user to form page
-                    window.location.href = "http:/dmuzzin.github.io/hEYE/form.html"
-                }
-            });
-        })
-    </script>

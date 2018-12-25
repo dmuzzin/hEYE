@@ -33,6 +33,9 @@
     <div class="container-contact100">
         <div class="wrap-contact100">
             <form class="contact100-form validate-form">
+                <span class="contact100-form-title" id="name-title">
+                    Hello
+                </span>
                 <span class="contact100-form-title">
                     <img id="prof" src="" style="width:100px;height:100px;">
                 </span>
@@ -154,7 +157,7 @@
             document.body.prepend(namenode);
 
             document.getElementById("prof").src = sessionStorage.getItem("photo");
-
+            document.getElementById("name-title").innerHTML = "Hello, " + sessionStorage.getItem("name");
             console.log(sessionStorage.getItem("alias"));
             console.log(sessionStorage.getItem("name"));
             console.log(sessionStorage.getItem("photo"));

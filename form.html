@@ -164,16 +164,15 @@
 
     <!-- Script to submit form to Google Sheets-->
     <script>
-        var $form = $('form#match-form'),
-        url = 'https://script.google.com/macros/s/AKfycbyTwlhVTE2qflgS9Z2kyu0UnMedG4PsuOrRXfI-DFrIyLQI35XJ/exec'
-
+        var url = 'https://script.google.com/macros/s/AKfycbyTwlhVTE2qflgS9Z2kyu0UnMedG4PsuOrRXfI-DFrIyLQI35XJ/exec'
+        var formData = JSON.parse(JSON.stringify(jQuery('#match-form').serializeArray()))
         $('#submit-form').on('click', function (e) {
             e.preventDefault();
             var jqxhr = $.ajax({
                 url: url,
                 method: "GET",
                 dataType: "json",
-                data: $form.serializeObject()
+                data: formData
             }).success(
                 // Redirect user to form page
                 window.location.href = "http:/dmuzzin.github.io/hEYE/form.html"

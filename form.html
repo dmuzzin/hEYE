@@ -30,7 +30,7 @@
 <body>
     <div class="container-contact100">
         <div class="wrap-contact100">
-            <form class="contact100-form" id="submit-to-google-sheet">
+            <form class="contact100-form" id="match-form">
                 <span class="contact100-form-title" id="name-title">
                     Hello
                 </span>
@@ -110,7 +110,7 @@
                 <div class="container-contact100-form-btn">
                     <div class="wrap-contact100-form-btn">
                         <div class="contact100-form-bgbtn"></div>
-                        <button type="submit" class="contact100-form-btn" id="submit-form">
+                        <button class="contact100-form-btn" id="submit-form">
                             <span>
                                 Submit
                                 <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -160,16 +160,4 @@
         document.getElementById("unique-id").innerHTML = "<strong>Your ID is: " + sessionStorage.getItem("id") + "</strong>";
         document.getElementById("prof").src = sessionStorage.getItem("photo");
         document.getElementById("name-title").innerHTML = "Hello, " + sessionStorage.getItem("name");
-    </script>
-
-    <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyTwlhVTE2qflgS9Z2kyu0UnMedG4PsuOrRXfI-DFrIyLQI35XJ/exec'
-        const form = document.forms['submit-to-google-sheet']
-
-        form.addEventListener('submit', e => {
-            e.preventDefault()
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => console.log('Success!', response))
-                .catch(error => console.error('Error!', error.message))
-        })
     </script>

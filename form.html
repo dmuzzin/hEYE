@@ -30,7 +30,7 @@
 <body>
     <div class="container-contact100">
         <div class="wrap-contact100">
-            <form class="contact100-form validate-form">
+            <form class="contact100-form validate-form" id="match-form">
                 <span class="contact100-form-title" id="name-title">
                     Hello
                 </span>
@@ -39,16 +39,18 @@
                 </span>
                 <p id="unique-id" style="text-align: center; padding-bottom: 20px"><strong>Your unique ID is: </strong></p>
 
+                <input id="user-id-input" type="hidden" name="id"  value="">
+
                 <div class="wrap-input100 validate-input" data-validate="Potential match's ID is required">
                     <span class="label-input100">Potential Match</span>
-                    <input class="input100" type="text" name="name" placeholder="Enter your potential match's ID number">
+                    <input class="input100" type="text" name="match_id" placeholder="Enter your potential match's ID number">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 input100-select">
                     <span class="label-input100">I felt a connection with this person.</span>
                     <div>
-                        <select class="selection-2" name="email">
+                        <select class="selection-2" name="connection_rating">
                             <option>1: Strongly Disagree -- 10: Strongly Agree</option>
                             <option>1</option>
                             <option>2</option>
@@ -68,7 +70,7 @@
                 <div class="wrap-input100 input100-select">
                     <span class="label-input100">I had a great experience with this person.</span>
                     <div>
-                        <select class="selection-2" name="service">
+                        <select class="selection-2" name="experience_rating">
                             <option>1: Strongly Disagree -- 10: Strongly Agree</option>
                             <option>1</option>
                             <option>2</option>
@@ -88,7 +90,7 @@
                 <div class="wrap-input100 input100-select">
                     <span class="label-input100">I’d love to talk to this person after the event.</span>
                     <div>
-                        <select class="selection-2" name="budget">
+                        <select class="selection-2" name="meet_rating">
                             <option>1: Strongly Disagree -- 10: Strongly Agree</option>
                             <option>1</option>
                             <option>2</option>
@@ -108,7 +110,7 @@
                 <div class="container-contact100-form-btn">
                     <div class="wrap-contact100-form-btn">
                         <div class="contact100-form-bgbtn"></div>
-                        <button class="contact100-form-btn">
+                        <button class="contact100-form-btn" id="submit-form">
                             <span>
                                 Submit
                                 <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -154,7 +156,27 @@
 
     <!-- Add user specific styling to form -->
     <script>
+        document.getElementById("user-id-input").value = sessionStorage.getItem("id");
         document.getElementById("unique-id").innerHTML = "<strong>Your ID is: " + sessionStorage.getItem("id") + "</strong>";
         document.getElementById("prof").src = sessionStorage.getItem("photo");
         document.getElementById("name-title").innerHTML = "Hello, " + sessionStorage.getItem("name");
+    </script>
+
+    <!-- Script to submit form to Google Sheets-->
+    <script>
+        var $form = $('form#match-form'),
+        url = 'https://script.google.com/macros/s/AKfycbyTwlhVTE2qflgS9Z2kyu0UnMedG4PsuOrRXfI-DFrIyLQI35XJ/exec'
+
+        $('#submit-form').on('click', function (e) {
+            e.preventDefault();
+            var jqxhr = $.ajax({
+                url: url,
+                method: "GET",
+                dataType: "json",
+                data: $form.serializeObject()
+            }).success(
+                // Redirect user to form page
+                window.location.href = "http:/dmuzzin.github.io/hEYE/form.html"
+            );
+        })
     </script>

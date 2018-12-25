@@ -24,7 +24,6 @@
 
     var match_id = $('.validate-input input[name="match_id"]');
 
-    console.log(document.getElementById("meet_rating").val)
     $('#submit-form').on('click', function (e) {
         if ($(match_id).val().trim() == '') {
             showValidate(name);
@@ -43,7 +42,7 @@
         });
     })
 
-    $('.submit-form .input100').each(function(){
+    $('.match-form .input100').each(function(){
         $(this).focus(function(){
            hideValidate(this);
        });

@@ -22,6 +22,7 @@
 
     $('#submit-form').on('click', function (e) {
         var formData = JSON.stringify(jQuery('#match-form').serializeArray()); // store json string
+        console.log(formData);
         e.preventDefault();
         var jqxhr = $.ajax({
             url: url,

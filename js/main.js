@@ -19,35 +19,30 @@
   
     /*==================================================================
     [ Validate ]*/
-    var name = $('.validate-input input[name="name"]');
-    var email = $('.validate-input input[name="email"]');
-    var message = $('.validate-input textarea[name="message"]');
+    var url = 'https://script.google.com/macros/s/AKfycbyTwlhVTE2qflgS9Z2kyu0UnMedG4PsuOrRXfI-DFrIyLQI35XJ/exec'
+    var formData = JSON.parse(JSON.stringify(jQuery('#match-form').serializeArray()))
 
+    var match_id = $('.validate-input input[name="match_id"]');
 
-    $('.validate-form').on('submit',function(){
-        var check = true;
-
-        if($(name).val().trim() == ''){
+    $('#submit-form').on('click', function (e) {
+        if ($(match_id).val().trim() == '') {
             showValidate(name);
-            check=false;
+            return false;
         }
+        e.preventDefault();
+        var jqxhr = $.ajax({
+            url: url,
+            method: "GET",
+            dataType: "json",
+            data: formData,
+            success: function () {
+                // Redirect user to form page
+                window.location.href = "http:/dmuzzin.github.io/hEYE/form.html"
+            }
+        });
+    })
 
-
-        if($(email).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-            showValidate(email);
-            check=false;
-        }
-
-        if($(message).val().trim() == ''){
-            showValidate(message);
-            check=false;
-        }
-
-        return check;
-    });
-
-
-    $('.validate-form .input100').each(function(){
+    $('.submit-form .input100').each(function(){
         $(this).focus(function(){
            hideValidate(this);
        });

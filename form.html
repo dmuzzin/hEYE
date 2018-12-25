@@ -51,17 +51,17 @@
                     <span class="label-input100">I felt a connection with this person.</span>
                     <div>
                         <select class="selection-2" name="connection_rating">
-                            <option>1: Strongly Disagree -- 10: Strongly Agree</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
+                            <option value="EMPTY">1: Strongly Disagree -- 10: Strongly Agree</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
                         </select>
                     </div>
                     <span class="focus-input100"></span>
@@ -71,17 +71,17 @@
                     <span class="label-input100">I had a great experience with this person.</span>
                     <div>
                         <select class="selection-2" name="experience_rating">
-                            <option>1: Strongly Disagree -- 10: Strongly Agree</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
+                            <option value="EMPTY">1: Strongly Disagree -- 10: Strongly Agree</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
                         </select>
                     </div>
                     <span class="focus-input100"></span>
@@ -91,17 +91,17 @@
                     <span class="label-input100">I’d love to talk to this person after the event.</span>
                     <div>
                         <select class="selection-2" name="meet_rating">
-                            <option>1: Strongly Disagree -- 10: Strongly Agree</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
+                            <option value="EMPTY">1: Strongly Disagree -- 10: Strongly Agree</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
                         </select>
                     </div>
                     <span class="focus-input100"></span>
@@ -160,4 +160,23 @@
         document.getElementById("unique-id").innerHTML = "<strong>Your ID is: " + sessionStorage.getItem("id") + "</strong>";
         document.getElementById("prof").src = sessionStorage.getItem("photo");
         document.getElementById("name-title").innerHTML = "Hello, " + sessionStorage.getItem("name");
+    </script>
+
+    <!-- Script to submit form to Google Sheets-->
+    <script>
+        var url = 'https://script.google.com/macros/s/AKfycbyTwlhVTE2qflgS9Z2kyu0UnMedG4PsuOrRXfI-DFrIyLQI35XJ/exec'
+        var formData = JSON.parse(JSON.stringify(jQuery('#match-form').serializeArray()))
+        $('#submit-form').on('click', function (e) {
+            e.preventDefault();
+            var jqxhr = $.ajax({
+                url: url,
+                method: "GET",
+                dataType: "json",
+                data: formData,
+                success: function () {
+                    // Redirect user to form page
+                    window.location.href = "http:/dmuzzin.github.io/hEYE/form.html"
+                }
+            });
+        })
     </script>

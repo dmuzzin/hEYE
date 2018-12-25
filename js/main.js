@@ -13,10 +13,10 @@
             else {
                 $(this).removeClass('has-val');
             }
-        })    
+        })
     })
-  
-  
+
+
     /*==================================================================
     [ Validate ]*/
     var url = 'https://script.google.com/macros/s/AKfycbyTwlhVTE2qflgS9Z2kyu0UnMedG4PsuOrRXfI-DFrIyLQI35XJ/exec'
@@ -24,6 +24,7 @@
 
     var match_id = $('.validate-input input[name="match_id"]');
 
+    console.log(document.getElementById("meet_rating").val)
     $('#submit-form').on('click', function (e) {
         if ($(match_id).val().trim() == '') {
             showValidate(name);
@@ -59,7 +60,5 @@
 
         $(thisAlert).removeClass('alert-validate');
     }
-    
-    
 
 })(jQuery);

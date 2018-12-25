@@ -1,13 +1,12 @@
-
 (function ($) {
     "use strict";
 
 
     /*==================================================================
     [ Focus Contact2 ]*/
-    $('.input100').each(function(){
-        $(this).on('blur', function(){
-            if($(this).val().trim() != "") {
+    $('.input100').each(function () {
+        $(this).on('blur', function () {
+            if ($(this).val().trim() != "") {
                 $(this).addClass('has-val');
             }
             else {
@@ -20,15 +19,10 @@
     /*==================================================================
     [ Validate ]*/
     var url = 'https://script.google.com/macros/s/AKfycbyTwlhVTE2qflgS9Z2kyu0UnMedG4PsuOrRXfI-DFrIyLQI35XJ/exec'
-    var formData = JSON.parse(JSON.stringify(jQuery('#match-form').serializeArray()))
+    var form = $('#match-form').serializeJSON();
 
-    var match_id = $('.validate-input input[name="match_id"]');
-
-    $('#submit-form').on('click', function (e) {
-        if ($(match_id).val().trim() == '') {
-            showValidate(name);
-            return false;
-        }
+    console.log(form);
+    $('#match-form').on('click', function (e) {
         e.preventDefault();
         var jqxhr = $.ajax({
             url: url,
@@ -42,10 +36,10 @@
         });
     })
 
-    $('.match-form .input100').each(function(){
-        $(this).focus(function(){
-           hideValidate(this);
-       });
+    $('.match-form .input100').each(function () {
+        $(this).focus(function () {
+            hideValidate(this);
+        });
     });
 
     function showValidate(input) {
@@ -59,5 +53,7 @@
 
         $(thisAlert).removeClass('alert-validate');
     }
+
+
 
 })(jQuery);
